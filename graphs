@@ -1,6 +1,4 @@
 
-Graph 1: Making a graph that depicts total number of hospital beds by state
-
 covid <- read.csv("data/HRRScorecard.csv")
 
 covid %>% as_data_frame()
@@ -108,5 +106,11 @@ US_cases <- us_cases %>%
   dplyr::rename(total_cases = x)
 
 total <- left_join(US_cases, us_beds) 
-*** I am gettting NAs when I join, if this data set was smooth I would then create a scatterplot ***
+
+This is the updated first graph code:
+us_hospitals %>%
+  ggplot(aes(x=State, y=Total.beds))+
+  geom_col()+
+  labs(title= "Total Number of Hospital Beds by State", ylab="Total Number of Beds")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
